@@ -18,3 +18,5 @@ document.querySelector('button').onclick = function(){
     xhttp.open('GET', url +  message, true);
     xhttp.send();
 }
+
+//checkChanges
