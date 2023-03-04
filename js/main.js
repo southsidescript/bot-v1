@@ -19,3 +19,4 @@ document.querySelector('button').onclick = function(){
     xhttp.send();
 }
 
+//lastCheckChanges
