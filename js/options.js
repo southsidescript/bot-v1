@@ -19,4 +19,12 @@ againOptions:{
         })
     
     }
+    /* musicOptions:{
+        reply_markup: JSON.stringify({
+            inline_keyboard: [
+                [{text:'Две Лесбухи',callback_data:'/DveLesbuhi'}],          
+            ]
+        })
+    
+    } */
 }

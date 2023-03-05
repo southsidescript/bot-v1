@@ -1,6 +1,6 @@
 const TelegramApi = require('node-telegram-bot-api');
 
-const {gameOptions, againOptions} =require('./js/options')
+const {gameOptions, againOptions, musicOptions} =require('./js/options')
 
 const token = '6026951899:AAFFELKN2vX0slyWglqUnOGqZddcDgSUnVc';
 
@@ -31,6 +31,7 @@ const start = () =>{
     bot.setMyCommands([
         {command: '/start',description:'Начальное приветствие'},
         {command: '/info',description:'Информация'},
+        {command:'/music',description:'scriptonite'},
         {command:'/game',description:'Грязные игры'},
         
     ])
@@ -44,9 +45,21 @@ const start = () =>{
            return  bot.sendMessage(chatId,'Hi sweetie ,welcome to bot by @southsidescrip'); 
           }
          if(text === '/info'){
-           return bot.sendMessage(chatId,`Вас зовут ${msg.from.first_name} ${msg.from.last_name} господин/госпожа?`)
+           return bot.sendMessage(chatId,`Вас зовут ${msg.from.first_name} господин/госпожа?`)
          }
-         
+         if(text ==='Госпожа'){
+          return bot.sendMessage(chatId,`Слушаю ваш запрос ,Госпожа ${msg.from.first_name}`); 
+         }
+         if(text ==='Господин'){
+           return bot.sendMessage(chatId,`Слушаю ваш запрос ,Господин ${msg.from.first_name}`);
+         }
+         if(text === '/music'){
+           await bot.sendAudio(chatId,'./audio/ДвеЛесбухи.mp3',);
+           await bot.sendAudio(chatId,'./audio/НеЗабирайМеняСпать.mp3',);
+           await bot.sendAudio(chatId,'./audio/МоскваЛюбит.mp3',);
+           await bot.sendAudio(chatId,'./audio/Чистый.mp3',);
+           return bot.sendAudio(chatId,'./audio/ЭтоЛюбовь.mp3',);
+         }
          if(text === '/game'){
       
             return startGame(chatId);
@@ -66,7 +79,7 @@ const start = () =>{
         if(data===chats[chatId]){
                await   bot.sendMessage(chatId,`Поздравляю вы отгадали цифру ${chats[chatId]} лицо бота к вашим услугам`)
                return  bot.sendSticker(chatId,'https://tlgrm.ru/_/stickers/711/2ce/7112ce51-3cc1-42ca-8de7-62e7525dc332/1.webp')
-        }else{
+        } else{
             return bot.sendMessage(chatId,`К сожалению вы госпожа ${msg.from.first_name} сегодня без ничего.Бот загадал число ${chats[chatId]}`,againOptions);
         }
         
