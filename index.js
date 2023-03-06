@@ -18,11 +18,11 @@ const chats = {};
 
 
 const startGame = async(chatId) =>{ 
-    await  bot.sendSticker(chatId,'https://tlgrm.ru/_/stickers/93c/dca/93cdcaef-8ca5-3f2c-b41f-b9ae857ba159/192/49.webp')
-    await  bot.sendMessage(chatId,`Сейчас я загадаю цифру от 0-9 а вы должны отгадать ее ,отгадаете можете сесть боту на лицо`)
+    await  bot.sendSticker(chatId,'https://tlgrm.ru/_/stickers/8d1/8c0/8d18c03b-2e7d-35ec-8acd-e6711664fad6/192/15.webp')
+    await  bot.sendMessage(chatId,`Сейчас я загадаю цифру от 0-9 а вы должны отгадать ее ,отгадаете можете сесть Sxriptix-у на лицо`)
     const randomNumber = Math.floor(Math.random() * 10)
     chats[chatId] = randomNumber;
-    await  bot.sendMessage(chatId,'Отгадывайте госпожа:',gameOptions);
+    await  bot.sendMessage(chatId,'Отгадывайте:',gameOptions);
 }
 
 
@@ -31,6 +31,7 @@ const start = () =>{
     bot.setMyCommands([
         {command: '/start',description:'Начальное приветствие'},
         {command: '/info',description:'Информация'},
+        {command: '/acquaintance',description:'Знакомство'},
         {command:'/music',description:'scriptonite'},
         {command:'/game',description:'Грязные игры'},
         
@@ -41,10 +42,15 @@ const start = () =>{
         const chatId = msg.chat.id;
         console.log(msg);
         if(text ==='/start'){
-           await  bot.sendSticker(chatId,'https://tlgrm.ru/_/stickers/9d0/488/9d04880c-c454-31d4-984a-106b020cad15/7.webp')
+           await  bot.sendSticker(chatId,'https://tlgrm.ru/_/stickers/8d1/8c0/8d18c03b-2e7d-35ec-8acd-e6711664fad6/192/14.webp')
            return  bot.sendMessage(chatId,'Hi sweetie ,welcome to bot by @southsidescrip'); 
           }
-         if(text === '/info'){
+          if(text ==='/info'){
+            await bot.sendSticker(chatId,'https://tlgrm.ru/_/stickers/8d1/8c0/8d18c03b-2e7d-35ec-8acd-e6711664fad6/192/34.webp')
+            return bot.sendMessage(chatId,`Меня зовут сэр Scriptix 🤖.Я первый экземпляр Мистера @southsidescrip.Скоро у меня появится функция бомбочки 💣.Из команд могу включить музыку исполнителя Скриптонит 
+и сыграть с вами в игру.Scriptix в вашем распоряжении госпожа ${msg.from.first_name}`); 
+           }
+         if(text === '/acquaintance'){
            return bot.sendMessage(chatId,`Вас зовут ${msg.from.first_name} господин/госпожа?`)
          }
          if(text ==='Госпожа'){
@@ -65,7 +71,7 @@ const start = () =>{
             return startGame(chatId);
           }
           
-         return bot.sendMessage(chatId,`Я к сожалению не понимаю ваши команды госпожа ${msg.from.first_name}:( Ознакомтесь с командами`)
+         return bot.sendMessage(chatId,`Я к сожалению не понимаю ваши команды госпожа ${msg.from.first_name} :( Ознакомтесь с командами`)
         
     })
    
@@ -80,7 +86,7 @@ const start = () =>{
                await   bot.sendMessage(chatId,`Поздравляю вы отгадали цифру ${chats[chatId]} лицо бота к вашим услугам`)
                return  bot.sendSticker(chatId,'https://tlgrm.ru/_/stickers/711/2ce/7112ce51-3cc1-42ca-8de7-62e7525dc332/1.webp')
         } else{
-            return bot.sendMessage(chatId,`К сожалению вы госпожа ${msg.from.first_name} сегодня без ничего.Бот загадал число ${chats[chatId]}`,againOptions);
+            return bot.sendMessage(chatId,`К сожалению вы госпожа ${msg.from.first_name} сегодня без ничего.Scriptix загадал число ${chats[chatId]}`,againOptions);
         }
         
 
